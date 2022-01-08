@@ -23,9 +23,8 @@ function setDetails(anchor) {
            }
 
     selectedItem = anchor.parentElement;
+
     
-    if (selectedItem){
-        selectedItem.classList.remove("selected");
     }
     //get element with class thumbnails-title inside the given anchor
     let thumbnailsTitleSelector = `[href="${hrefValue}"] .thumbnails-title`;
