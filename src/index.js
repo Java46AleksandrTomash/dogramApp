@@ -2,6 +2,8 @@ console.log("script launched");
 let detailsImage = document.querySelector(".details-image");
 let detailsTitle = document.querySelector(".details-title");
 let mainContentEl = document.querySelector(".main-content");
+let sound = document.getElementById('myAudio');
+
 
 let selectedItem;
 let anchors = 
@@ -17,15 +19,12 @@ function setDetails(anchor) {
     console.log("anchor element  was pressed", anchor);
     let hrefValue = anchor.getAttribute("href");
     detailsImage.setAttribute("src", hrefValue );
-    anchor.parentElement.classList.add("selected");
+    
     if (selectedItem) {
         selectedItem.classList.remove("selected")
-           }
-
-    selectedItem = anchor.parentElement;
-
-    
     }
+    anchor.parentElement.classList.add("selected");
+    selectedItem = anchor.parentElement;
     //get element with class thumbnails-title inside the given anchor
     let thumbnailsTitleSelector = `[href="${hrefValue}"] .thumbnails-title`;
     let thumbnailsTitleEl = document.querySelector(thumbnailsTitleSelector);
@@ -35,7 +34,27 @@ function setDetails(anchor) {
 }
 function showDetails() {
     mainContentEl.classList.remove('hidden');
+    detailsImage.parentElement.classList.add('is-tiny')
+    setTimeout( removeIsTiny)
+
 }
+// function enableMute() { 
+//     sound.muted = true;
+//   } 
+  
+//   function disableMute() { 
+//     sound.muted = false;
+//   } 
+  
+  
+function removeIsTiny(){
+    detailsImage.parentElement.classList.remove('is-tiny');
+}
+
 function hideDetails() {
     mainContentEl.classList.add('hidden') 
+    if(selectedItem){
+selectedItem.classList.remove('selected')
+
+    }
 }
